@@ -1,0 +1,301 @@
+@font-face {
+  font-family: 'Fanwood';
+  src: URL('../fonts/FanwoodText-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Fanwood Italic';
+  src: URL('../fonts/FanwoodText-Italic.ttf') format('truetype');
+}
+
+body {
+    margin: 0;
+    overflow: auto;
+}
+
+#form-container, #header-container {
+    position: relative;
+    background-color: black;
+    height: 100vh;
+    width: 100%;
+    font-family: "Fanwood", Times New Roman, Serif;
+    overflow: auto;
+}
+
+#form-container {
+    background-color: white;
+/*    overflow: auto;*/
+    padding: 10%;
+}
+
+#header-container {
+    background-color: black;
+}
+
+#content-container {
+    background-color: aqua;
+    width: 100%;
+    height: 50vh;
+    opacity: 10%;
+    margin-top: 25vh;
+}
+
+#main-header-wrapper {
+    width: 75%;    
+    margin-left: 25%;
+    padding-bottom: 15px;
+    border-bottom: 10px solid white;
+}
+
+#main-header {
+    font-size: 65px;
+}
+
+#header-content-wrapper {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 6%;
+    margin-right: 6%;
+    text-align: right;  
+    color: white;
+    font-family: "Fanwood", Times New Roman, Serif;
+}
+
+hr#header-line {
+    border: 6px solid white;
+    width: 60%;
+    margin-left: 40%;
+}
+
+#blurb {
+    margin-top: 40px;
+    font-size: 18px;
+    line-height: 31px;
+}
+
+#disclaimer {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    left:5px;
+    font-size: 12px;
+    color: white;
+    font-family: "Fanwood Italic", Times New Roman, Serif;
+}
+
+#email-counter {
+    margin-top: 50px;
+    font-size: 36px;
+}
+
+#form-content-wrapper {   
+/*    display: none;*/
+/*
+    background-color: red;
+    overflow: auto;
+*/
+}
+
+#form-content-wrapper input[type="text"], select {
+    width: 100%;
+    height: 29px;
+    margin-top: 5px;
+    border-radius: 0px;
+    border: 1px solid black;
+    margin-bottom: 30px;
+    font-family: Fanwood, Times New Roman, Serif;
+    font-size: 16px;
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+}
+
+#form-content-wrapper input[type="text"]:focus{
+    outline: none !important;
+}
+
+#form-content-wrapper select {
+    cursor: pointer;
+}
+
+#form-content-wrapper input[type="checkbox"] {
+    vertical-align: baseline;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+
+#form-content-wrapper label {
+    font-size: 18px;
+    line-height: 18px;
+}
+
+#officials {
+    width: 100%;
+    border: 1px solid black;
+    margin-bottom: 30px;
+    overflow-x: auto;
+    margin-top: 5px;
+    padding: 15px;
+    color: #000000;
+    display: inline-flex;
+}
+
+.btn {
+    font-family: Fanwood, Times New Roman, Serif;
+    font-size: 20px;
+    height: 48px;
+    width: 229px;
+    color: white;
+    background: black;
+    border: 1px solid black;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+}
+
+.btn:hover {
+    color: black;
+    background: white;
+    cursor: pointer;
+}
+
+#incidents {
+    width: 100%;
+    height: 150px;
+/*    max-height: 300px;*/
+    border: 1px solid black;
+    margin-bottom: 30px;
+    overflow-y: auto;
+    margin-top: 5px;
+    padding: 15px;
+    color: #000000;
+}
+
+#incidents a {
+    text-decoration: none;
+}
+
+.officials-card {
+    height: 144px;
+    width: 120px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-family: "Fanwood", Times New Roman, Serif;
+    padding: 13px;
+    margin-right: 20px;
+}
+
+.officials-position, .officials-email {
+    font-size: 13px;
+    word-wrap: break-word;
+    font-family: "Fanwood Italic";
+}
+
+.officials-name {
+    font-family: "Fanwood", "Times New Roman", Serif;
+    font-size: 14px;
+    word-wrap: break-word;
+    line-height: 18px;
+    margin-bottom: 10px;
+}
+
+#header-container-bg {
+    width: 100%; 
+    height: 100%; 
+
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../resources/bg-1.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#warning {
+    position: absolute;
+    bottom:8px;
+    right: 8px;
+    margin-left: 8px;
+    font-size: 15px;
+    line-height: 16px;
+}
+
+.warning-img {
+    vertical-align: text-top;
+    margin-right:5px;
+}
+
+#feedback-wrapper {
+    width: 80%;
+    border: 1px solid black;
+    padding: 80px;
+    margin-bottom: 60px;
+}
+
+#thanks {
+    font-size: 36px;
+    line-height: 47px;
+    margin-bottom: 30px;
+}
+
+#missing-data {
+    margin-bottom: 30px;
+}
+
+#feedback {
+    display: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);    
+}
+
+#scroll {
+    display: none;
+    color: white;
+    text-align: center;
+    font-family: "Fanwood", Times New Roman, Serif;
+    font-size: 20px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 100px;
+}
+
+@media (min-width: 576px) { 
+    #scroll {
+        display: block;
+    }
+    
+    #form-container { 
+        overflow: hidden;
+    }
+    
+    body {
+        overflow: auto;
+    }
+}
+
+@media (min-width: 768px) { 
+    #scroll {
+        display: none;
+    }
+    
+    #form-container { 
+        overflow: auto;
+    }
+    
+    body {
+        overflow: hidden;
+    }
+} 
+
+#error-messages {
+    color: red;
+    font-family: "Fanwood", Times New Roman, Serif;
+    font-size: 18px;
+}
