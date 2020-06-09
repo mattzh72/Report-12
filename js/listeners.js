@@ -24,22 +24,21 @@ $("#launch").click(() => {
     if (results !== null && template !== null) {
         results.officials = findOfficials(contacts, results.state, results.city);
         results.incidents = findIncidents(incidents, results.state, results.city);
-
-
         let emails = draftEmails(results, template);
         $("#email-results li").remove();
         for (let [destination, body] of Object.entries(emails)) {
-//            send(destination, body);
             createEmailLink(destination, body);
         }
-
-    }
+        $("#gmail").click(() => {
+            for (let [destination, body] of Object.entries(emails)) {
+                send(destination, body);
+            }
+        });
         $("#form-content-wrapper").fadeOut(500, () => {
             $("#feedback").fadeIn(500);
         });
+    }
 });
-
-
 
 
 // Read in data and initialize states

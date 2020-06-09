@@ -124,7 +124,7 @@ function createEmailLink(destination, body) {
 function makeTemplate(data, template) {
     template = template.replace("<<Location>>", data.city + ", " + data.state);
     template = template.replace("<<Name>>", data.name);
-    template = template.replace("<<Name>>", data.name);
+    template = template.replace("<<Name>>", data.name); // One at the end, this is a dumb solution but whatever
     template = template.replace("<<Age>>", data.age);
     let incidentText = "INCIDENTS:\n";
     data.incidents.forEach(incident => {
@@ -165,16 +165,17 @@ function clearErrorMessage() {
 }
 
 function send(destination, body) {
-    let link = "https://mail.google.com/mail?view=cm&tf=0" +
+    let link = "https://mail.google.com/mail/?view=cm&fs=1" +
         (destination ? ("&to=" + destination) : "") +
         ("&su=Demanding Justice in Your Community") +
-        ("&body=" + body);
+        ("&body=" + encodeURIComponent(body));
 
-    $('<a>', {
+    alert(link);
+    let tempLink = $('<a>', {
         href: link,
         target: "_blank",
         class: "temporary-email-link"
     }).appendTo('body');
-    $(".temporary-email-link")[0].click();
-    $(".temporary-email-link").remove();
+    tempLink[0].click();
+    tempLink.remove();
 }
