@@ -1,4 +1,10 @@
-const requiredKeys = {name: 1, email: 1, state: 1, city: 1, resident: 1};
+const requiredKeys = {
+    name: 1,
+    email: 1,
+    state: 1,
+    city: 1,
+    resident: 1
+};
 
 function verify() {
     // Check name is filled out
@@ -13,17 +19,17 @@ function verify() {
     let resident = $("#resident").is(":checked");
     // Check age
     let age = $("#age").val().trim();
-    
+
     // OPTIONAL REGIONS
     //Check university
     let university = $("#university").val().trim();
-    
+
     let validEmail = emailRegex.test(email);
     let validName = name.length > 0;
     let validState = state !== null;
     let validCity = city !== null;
     let validAge = Number.isInteger(Number(age));
-    
+
     let errors = [];
     if (!validName) {
         errors.push("Name");
@@ -40,46 +46,54 @@ function verify() {
     if (!validCity) {
         errors.push("City");
     }
-    
+
     if (!validAge) {
         errors.push("Age");
     }
-    
+
     clearErrorMessage();
     if (errors.length > 0) {
         setErrorMessage(errors);
         return null;
     }
-    
-    let result = {name: name, email: email, state: state, city: city, resident: resident};
+
+    let result = {
+        name: name,
+        email: email,
+        state: state,
+        city: city,
+        resident: resident
+    };
     if (age !== "") {
         result.age = age;
     }
-    
+
     if (university !== "") {
         console.log(university);
         result.university = university;
     }
-    
+
     return result;
 }
 
 function draftEmails(data, template) {
     let master = makeTemplate(data, template);
     let emails = {}; // indexed by email
-    
+
     for (let [position, contact] of Object.entries(data.officials)) {
         let template = master;
-        
+
         if (position == "Mayor") {
             template = template.replace("<<Recipient>>", "Mayor " + contact.name);
+            emails[contact.email] = template;
         } else {
             template = template.replace("<<Recipient>>", "All Council Members");
+            emails[contact.email] = template;
         }
+
         
-        emails[contact.email] = template;
     }
-    
+
     return emails;
 }
 
@@ -88,7 +102,7 @@ function makeTemplate(data, template) {
     template = template.replace("<<Name>>", data.name);
     template = template.replace("<<Name>>", data.name);
     template = template.replace("<<Age>>", data.age);
-        
+
     let incidentText = "";
     data.incidents.forEach(incident => {
         incidentText += incident.name + "\n";
@@ -96,7 +110,7 @@ function makeTemplate(data, template) {
             incidentText += "Source " + (index + 1) + ": " + link + "\n";
         });
     });
-    
+
     template = template.replace("<<Incidents>>", incidentText);
 
     if (data.resident) {
@@ -104,13 +118,13 @@ function makeTemplate(data, template) {
     } else {
         template = template.replace("<<Residency>>", "");
     }
-    
-    if (data.university && data.university!== "") {
+
+    if (data.university && data.university !== "") {
         template = template.replace("<<University>>", data.university);
     } else {
         template = template.replace("<<University>>", "");
     }
-    
+
     return template;
 }
 
@@ -126,9 +140,13 @@ function clearErrorMessage() {
 }
 
 function send(destination, body) {
-    let link = `mailto:${destination}&subject=Demanding Justice in Your Community&body=${body}`;
+    let link = "https://mail.google.com/mail?view=cm&tf=0" +
+        (destination ? ("&to=" + destination) : "") +
+        ("&su=Demanding Justice in Your Community") +
+        ("&body=" + body);
+
     $('<a>', {
-        href: "https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto:john.doe@example.com",
+        href: link,
         target: "_blank",
         class: "temporary-email-link"
     }).appendTo('body');

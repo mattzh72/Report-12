@@ -13,7 +13,7 @@ body {
     overflow: auto;
 }
 
-#form-container, #header-container {
+#content-container, #header-container {
     position: relative;
     background-color: black;
     height: 100vh;
@@ -22,7 +22,7 @@ body {
     overflow: auto;
 }
 
-#form-container {
+#content-container {
     background-color: white;
 /*    overflow: auto;*/
     padding: 10%;
@@ -75,7 +75,7 @@ hr#header-line {
 }
 
 #disclaimer {
-    position: absolute;
+    position: fixed;
     bottom: 5px;
     right: 5px;
     left:5px;
@@ -217,16 +217,17 @@ hr#header-line {
 }
 
 #warning {
-    position: absolute;
+    position: fixed;
+    font-family: "Fanwood Italic";
     bottom:8px;
     right: 8px;
     margin-left: 8px;
-    font-size: 15px;
+    font-size: 13px;
     line-height: 16px;
 }
 
 .warning-img {
-    vertical-align: text-top;
+    vertical-align: middle;
     margin-right:5px;
 }
 
@@ -263,7 +264,7 @@ hr#header-line {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 100px;
+    bottom: 50px;
 }
 
 @media (min-width: 576px) { 
@@ -271,7 +272,7 @@ hr#header-line {
         display: block;
     }
     
-    #form-container { 
+    #content-container { 
         overflow: hidden;
     }
     
@@ -285,7 +286,7 @@ hr#header-line {
         display: none;
     }
     
-    #form-container { 
+    #content-container { 
         overflow: auto;
     }
     

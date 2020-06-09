@@ -5,7 +5,7 @@ const errors = {
 function indexIncidents(data) {
     var locations = {};
 
-    $("#data-update").text(data.updated_at);
+    console.log(data.updated_at);
     data.data.forEach(incident => {
         if (!(incident.state in errors)) {
             if (!(incident.state in locations)) {

@@ -29,7 +29,6 @@ $("#launch").click(() => {
         let emails = draftEmails(results, template);
         for (let [destination, body] of Object.entries(emails)) {
             send(destination, body);
-            break;
         }
 
     }
@@ -42,21 +41,16 @@ $("#launch").click(() => {
 // Read in data and initialize states
 $(document).ready(() => {
     cycleBackground();
-//    
-//    incidents = indexIncidents(rawIncidentsData);
-//    contacts = indexContacts(rawContactsData);
-    
-
     $.getJSON("https://raw.githubusercontent.com/mattzh72/Think-Globally-Act-Vocally/master/data/incidents.json", function (rawIncidentsData) {
+        $("#data-update").text(rawIncidentsData.updated_at);
         $.getJSON("https://raw.githubusercontent.com/mattzh72/Think-Globally-Act-Vocally/master/data/contacts.json", function (rawContactsData) {
             incidents = indexIncidents(rawIncidentsData);
             contacts = indexContacts(rawContactsData);
             populateStates(incidents);
         });
     });
-
-    $.get('https://github.com/mattzh72/Think-Globally-Act-Vocally/blob/master/resources/template.json', function (data) {
-        template = data.template;
+    $.get('https://raw.githubusercontent.com/mattzh72/Think-Globally-Act-Vocally/master/resources/template.txt', function (data) {
+        template = data;
     });
 });
 
