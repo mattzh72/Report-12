@@ -79,22 +79,46 @@ function verify() {
 function draftEmails(data, template) {
     let master = makeTemplate(data, template);
     let emails = {}; // indexed by email
-
     for (let [position, contact] of Object.entries(data.officials)) {
         let template = master;
-
-        if (position == "Mayor") {
+        if (position == "Mayor") 
+        {
             template = template.replace("<<Recipient>>", "Mayor " + contact.name);
             emails[contact.email] = template;
-        } else {
-            template = template.replace("<<Recipient>>", "All Council Members");
+        } 
+        else 
+        {
+            template = template.replace("<<Recipient>>", "Council Rep " + contact.name);
             emails[contact.email] = template;
         }
-
-        
     }
-
     return emails;
+}
+
+function createEmailLink(destination, body) {
+    let item = $('<li>');
+    let emailLink = $('<a>', {
+        href: "#",
+        text: destination
+    });
+    let copyLink = $('<a>', {
+        href: "#",
+        text: " (Copy Email) "
+    }).click(() => {
+        const el = document.createElement('textarea');
+        el.value = body;
+        el.setAttribute('readonly', '');
+        el.style.position = 'absolute';
+        el.style.left = '-9999px';
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+    });
+    
+    emailLink.appendTo(item);
+    copyLink.appendTo(item);
+    item.appendTo($("#email-results"));
 }
 
 function makeTemplate(data, template) {
@@ -102,29 +126,30 @@ function makeTemplate(data, template) {
     template = template.replace("<<Name>>", data.name);
     template = template.replace("<<Name>>", data.name);
     template = template.replace("<<Age>>", data.age);
-
-    let incidentText = "";
+    let incidentText = "INCIDENTS:\n";
     data.incidents.forEach(incident => {
-        incidentText += incident.name + "\n";
+        incidentText += `"${incident.name}"\n`;
         incident.links.forEach((link, index) => {
-            incidentText += "Source " + (index + 1) + ": " + link + "\n";
+            incidentText += `(${index + 1}) ${link}\n`;
         });
+        incidentText += `\n`;
     });
-
     template = template.replace("<<Incidents>>", incidentText);
-
-    if (data.resident) {
-        template = template.replace("<<Residency>>", `and I am one of your constituents`);
-    } else {
+    if (data.resident) 
+    {
+        template = template.replace("<<Residency>>", 'I am also one of your constituents. ');
+    } else 
+    {
         template = template.replace("<<Residency>>", "");
     }
 
-    if (data.university && data.university !== "") {
+    if (data.university && data.university !== "") 
+    {
         template = template.replace("<<University>>", data.university);
-    } else {
+    } else 
+    {
         template = template.replace("<<University>>", "");
     }
-
     return template;
 }
 

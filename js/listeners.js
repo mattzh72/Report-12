@@ -27,15 +27,19 @@ $("#launch").click(() => {
 
 
         let emails = draftEmails(results, template);
+        $("#email-results li").remove();
         for (let [destination, body] of Object.entries(emails)) {
-            send(destination, body);
+//            send(destination, body);
+            createEmailLink(destination, body);
         }
 
     }
-    //    $("#form-content-wrapper").fadeOut(500, () => {
-    //        $("#feedback").fadeIn(500);
-    //    });
+        $("#form-content-wrapper").fadeOut(500, () => {
+            $("#feedback").fadeIn(500);
+        });
 });
+
+
 
 
 // Read in data and initialize states

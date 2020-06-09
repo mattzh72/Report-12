@@ -32,14 +32,6 @@ body {
     background-color: black;
 }
 
-#content-container {
-    background-color: aqua;
-    width: 100%;
-    height: 50vh;
-    opacity: 10%;
-    margin-top: 25vh;
-}
-
 #main-header-wrapper {
     width: 75%;    
     margin-left: 25%;
@@ -245,7 +237,7 @@ hr#header-line {
 }
 
 #missing-data {
-    margin-bottom: 30px;
+/*    margin-bottom: 30px;*/
 }
 
 #feedback {
@@ -299,4 +291,24 @@ hr#header-line {
     color: red;
     font-family: "Fanwood", Times New Roman, Serif;
     font-size: 18px;
+}
+
+#results {
+    margin-bottom: 30px;
+}
+
+.hidden-input {
+    display: none;
+}
+
+
+
+#email-results {
+    line-height: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.hidden-textarea {
+    display: none;
 }
