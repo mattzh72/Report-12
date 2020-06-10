@@ -75,28 +75,69 @@ function draftEmails(data, template) {
     for (let [position, contact] of Object.entries(data.officials)) {
         let template = master;
         if (position == "Mayor") {
+            position = "Mayor ";
             template = template.replace("<<Recipient>>", "Mayor " + contact.name);
             emails[contact.email] = template;
         } else if (position == "DEFAULT") {
+            position = ""; // clear out for display purposes
+            contact.name = ""; // clear out for display purposes
             template = template.replace("<<Recipient>>", "[OFFICIAL ROLE] " + contact.name);
         } else {
+            position = "Council Rep ";
             template = template.replace("<<Recipient>>", "Council Rep " + contact.name);
         }
-        emails[contact.email] = template;
+        
+        emails[contact.email] = {body: template, name: contact.name, position: position};
     }
     return emails;
 }
 
-function createEmailLink(destination, body) {
-    let item = $('<li>');
+function createEmailLinks(destination, body, id, position="", name="", target = "#primary-option") {
+    let link = "mailto:" +
+        (destination ? (encodeURIComponent(destination)) : "") +
+        ("?subject=Demanding Justice in Our Communities") +
+        ("&body=" + encodeURIComponent(body));
+
+    let wrapper = $('<div>', {
+        text: `Email ${id}: ${position}${name}`,
+        class: "email-results-item"
+    });
+    let emailLink = $('<a>', {
+        href: link,
+        target: "_blank",
+        rel: "noopener noreferrer",
+        text: "Send Email",
+        id: "primary-" + id,
+        class:"right-align-anchor"
+    })
+    $("#primary-" + id).click(() => {
+        $("#primary-" + id).text("Sent! ✓");
+    });
+    emailLink.appendTo(wrapper);
+    wrapper.appendTo($(target));
+}
+
+function createCopyLinks(destination, body, id, target = "#backup-option") {
+    let wrapper = $('<div>', {
+        text: `Email ${id}: `,
+        class: "email-results-item"
+    }).appendTo($(target));
+    
     let emailLink = $('<a>', {
         href: "#",
-        text: destination
-    });
+        text: destination,
+        id: "backup-email-" + id,
+    }).appendTo(wrapper);
+
     let copyLink = $('<a>', {
         href: "#",
-        text: " (Copy Email) "
-    }).click(() => {
+        text: "Copy Text",
+        id: "backup-" + id,
+        class:"right-align-anchor"
+    }).appendTo(wrapper);
+
+    $("#backup-" + id).click(($e) => {
+        $e.preventDefault();
         const el = document.createElement('textarea');
         el.value = body;
         el.setAttribute('readonly', '');
@@ -106,11 +147,12 @@ function createEmailLink(destination, body) {
         el.select();
         document.execCommand('copy');
         document.body.removeChild(el);
+        $("#backup-" + id).text("Copied ✓");
     });
-
-    emailLink.appendTo(item);
-    copyLink.appendTo(item);
-    item.appendTo($("#email-results"));
+    
+    $("backup-email-" + id).click(($e) => {
+        $e.preventDefault();
+    });
 }
 
 function makeTemplate(data, template) {
@@ -127,17 +169,11 @@ function makeTemplate(data, template) {
         incidentText += `\n`;
     });
     template = template.replace("<<Incidents>>", incidentText);
-    if (data.resident) {
-        template = template.replace("<<Residency>>", 'I am also one of your constituents. ');
-    } else {
-        template = template.replace("<<Residency>>", "");
-    }
+    template = template.replace("<<Residency>>", 
+                                data.resident ? 'I am also one of your constituents. ': "");
+    template = template.replace("<<University>>", 
+                                data.university && data.university !== "" ? data.university : "");
 
-    if (data.university && data.university !== "") {
-        template = template.replace("<<University>>", data.university);
-    } else {
-        template = template.replace("<<University>>", "");
-    }
     return template;
 }
 

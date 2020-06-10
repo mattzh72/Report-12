@@ -15,21 +15,21 @@
             <div id="header-container">
                 <div id="header-content-wrapper">
                     <div id="main-header-wrapper">
-                        <span id="main-header">THINK GLOBALLY. <br>ACT VOCALLY.</span>
+                        <span id="main-header">MISSION STATEMENT</span>
                     </div>
 
                     <div id="blurb">
-                        <span>Protests have occurred across every one of the 50 states in America during the first week of June in 2020. Millions marched to protest the killing of George Floyd and police brutality. A week after George Floyd’s murder hundreds of videos have been released documenting abuse of power and excessive force by police against peaceful protesters. Many of our representatives who are elected to represent us are silent on this issue and not using their platforms for change. <br><br>This website has data on over 100 videos of police brutality occurring at protests nationwide, and the information of local city councilors and the mayor of the cities in which it occurred. Put in your name and location and we will draft a template with all the evidence linked. All you need to do is click send. Think globally and act vocally. #BlackLivesMatter</span>
+                        <span>Protests have occurred across every one of the 50 states in America during the first week of June in 2020. While millions marched to protest the killing of George Floyd and police brutality, countless police officers are documented using excessive force against peaceful protesters. Many of our representatives who are elected to represent us are silent on this issue and not using their platforms for change. <br><br>We've collected data on over 100 videos of police brutality occurring at protests nationwide, and the information of local city officials in those cities. Put in your name and any location (you don't need to be a resident) and we will draft a template with all the evidence linked. All you need to do is click send. #BlackLivesMatter</span>
                     </div>
 
                     <div id="email-counter">
                         <span></span> emails drafted &amp; counting...
                     </div>
-                </div>                
+                </div>
                 <div id="scroll">Scroll down to send your email....</div>
                 <div id="disclaimer">
                     <span style="float:left;">Data was last updated at: <span id="data-update"></span>.</span>
-<!--                    <span style="margin-left: 100px;;">*Disclaimer: We do not store your personal information.</span>-->
+                    <!--                    <span style="margin-left: 100px;;">*Disclaimer: We do not store your personal information.</span>-->
                 </div>
             </div>
         </div>
@@ -38,7 +38,7 @@
                 <div id="form-content-wrapper">
                     <label for="name">Name*<span class="error-msg">This is required!</span></label>
                     <input type="text" id="name" name="name" minlength="1">
-                    
+
 
                     <label for="state">State*<span class="error-msg">This is required!</span></label><br>
                     <select name="state" id="state">
@@ -77,13 +77,29 @@
                     <div id="feedback-wrapper">
                         <div id="thanks">THANK YOU.</div>
                         <div id="results">
-                            Your prepared emails are below. Click <span style="font-family: 'Fanwood Italic'">Copy Email</span> and paste in your email client:
-                            <ul id="email-results"></ul>
-                             Or, if you're using Gmail, click <a id="gmail" href>here</a>.
-                        
+                            <span id="success-message"></span>
+                            <div id="primary-option" class="email-results">
+                                <!--
+                                <div class="email-results-item">Email 1: mattzh72@gmailasdf.com <a href="">Send Email</a></div>
+                                <div class="email-results-item">Email 1: mattzh72@gmaisdfl.com <a href="">Send Email</a></div>
+                                <div class="email-results-item">Email 1: mattzh72asdf@gmail.com <a href="">Send Email</a></div>
+                                <div class="email-results-item">Email 1: mattzh7s2@gmail.com <a href="">Send Email</a></div>
+-->
+                            </div>
+                            Having trouble sending the email? Click <span style="font-family: 'Fanwood Italic'">"Copy Text"</span>, and paste it manually into your email client.
+                            <div id="backup-option" class="email-results">
+                                <!--
+                                <div class="email-results-item">Email 1: mattzh72@gmailasdf.com <a href="">Copy Text</a></div>
+                                <div class="email-results-item">Email 1: mattzh72@gmaisdfl.com <a href="">Copy Text</a></div>
+                                <div class="email-results-item">Email 1: mattzh72asdf@gmail.com <a href="">Copy Text</a></div>
+                                <div class="email-results-item">Email 1: mattzh7s2@gmail.com <a href="">Copy Text</a></div>
+-->
+                            </div>
+
                         </div>
-                        <div id="missing-data">We're working hard, but we're not finished yet.<span></span> Contact us here if you would like to contribute to this project or have a problem with the site. </div>
-<!--
+                        <div id="missing-data">We're working hard, but we're not finished yet. <a href="https://forms.gle/48XVxmAuCgPB9B8P8">Report</a> a problem using the site or <a href="https://forms.gle/ZGgnPKMF3jHgPth27">contribute</a> to our data!
+                        </div>
+                        <!--
                         <div id="Credits">
                             <li><a href="https://www.reddit.com/r/2020PoliceBrutality/">r/2020PoliceBrutality</a> tracks incidents.</li>
                             <li>matt made the site.</li>
@@ -96,14 +112,14 @@
                 </div>
 
 
-                <div id="warning"><img class="warning-img" src="./resources/images/warning.png" height=13px><span></span>Contact us if you would like to contribute.</div>
+                <div id="warning"><img class="warning-img" src="./resources/images/warning.png" height=14px><span></span>Report any issues with the site <a href="https://forms.gle/48XVxmAuCgPB9B8P8">here</a></div>
             </div>
         </div>
     </div>
 
     <!-- JQUERY -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    
+
     <!-- FIREBASE -->
     <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-analytics.js"></script>
@@ -115,4 +131,6 @@
     <script src="./js/bg.js"></script>
     <script src="./js/parse.js"></script>
     <script src="./js/listeners.js"></script>
-</body></html>
+</body>
+
+</html>

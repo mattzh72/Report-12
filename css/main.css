@@ -1,11 +1,11 @@
 @font-face {
-  font-family: 'Fanwood';
-  src: URL('../resources/fonts/FanwoodText-Regular.ttf') format('truetype');
+    font-family: 'Fanwood';
+    src: URL('../resources/fonts/FanwoodText-Regular.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'Fanwood Italic';
-  src: URL('../resources/fonts/FanwoodText-Italic.ttf') format('truetype');
+    font-family: 'Fanwood Italic';
+    src: URL('../resources/fonts/FanwoodText-Italic.ttf') format('truetype');
 }
 
 body {
@@ -13,25 +13,26 @@ body {
     overflow: auto;
 }
 
-#content-container, #header-container {
+#content-container,
+#header-container {
     position: relative;
     background-color: black;
     height: 100%;
     width: 100%;
     font-family: "Fanwood", Times New Roman, Serif;
     overflow: auto;
-    
+
 }
 
 #content-container {
     background-color: white;
-/*    overflow: auto;*/
+    /*    overflow: auto;*/
     padding: 10%;
 }
 
 #header-container {
     background-color: black;
-    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../resources/images/bg-1.png') no-repeat center center fixed;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../resources/images/bg-1.png') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -40,7 +41,7 @@ body {
 }
 
 #main-header-wrapper {
-    width: 75%;    
+    width: 75%;
     margin-left: 25%;
     padding-bottom: 15px;
     border-bottom: 10px solid white;
@@ -58,7 +59,7 @@ body {
     margin-bottom: 20px;
     margin-left: 6%;
     margin-right: 6%;
-    text-align: right;  
+    text-align: right;
     color: white;
     font-family: "Fanwood", Times New Roman, Serif;
 }
@@ -79,7 +80,7 @@ hr#header-line {
     position: fixed;
     bottom: 5px;
     right: 5px;
-    left:5px;
+    left: 5px;
     font-size: 12px;
     color: white;
     font-family: "Fanwood Italic", Times New Roman, Serif;
@@ -90,7 +91,8 @@ hr#header-line {
     font-size: 36px;
 }
 
-#form-content-wrapper input[type="text"], select {
+#form-content-wrapper input[type="text"],
+select {
     width: 100%;
     height: 30px;
     margin-top: 5px;
@@ -105,7 +107,7 @@ hr#header-line {
     -o-transition: all 0.30s ease-in-out;
 }
 
-#form-content-wrapper input[type="text"]:focus{
+#form-content-wrapper input[type="text"]:focus {
     outline: none !important;
 }
 
@@ -160,7 +162,7 @@ hr#header-line {
 #incidents {
     width: 100%;
     height: 150px;
-/*    max-height: 300px;*/
+    /*    max-height: 300px;*/
     border: 1px solid black;
     margin-bottom: 30px;
     overflow-y: auto;
@@ -184,7 +186,8 @@ hr#header-line {
     margin-right: 20px;
 }
 
-.officials-position, .officials-email {
+.officials-position,
+.officials-email {
     font-size: 13px;
     word-wrap: break-word;
     font-family: "Fanwood Italic";
@@ -198,9 +201,9 @@ hr#header-line {
 }
 
 #header-container-bg {
-    width: 100%; 
-    height: 100%; 
-/*    position: absolute;*/
+    width: 100%;
+    height: 100%;
+    /*    position: absolute;*/
 
 
 }
@@ -208,16 +211,16 @@ hr#header-line {
 #warning {
     position: fixed;
     font-family: "Fanwood Italic";
-    bottom:8px;
+    bottom: 8px;
     right: 8px;
     margin-left: 8px;
-    font-size: 13px;
-    line-height: 16px;
+    font-size: 14px;
+    line-height: 14px;
 }
 
 .warning-img {
     vertical-align: middle;
-    margin-right:5px;
+    margin-right: 5px;
 }
 
 #feedback-wrapper {
@@ -235,15 +238,15 @@ hr#header-line {
 }
 
 #missing-data {
-/*    margin-bottom: 30px;*/
+/*        margin-bottom: 10px;*/
 }
 
 #feedback {
-    display: none;
+        display: none;
     position: relative;
     top: 50%;
     left: 50%;
-    transform: translateY(-50%) translateX(-50%);   
+    transform: translateY(-50%) translateX(-50%);
 }
 
 #scroll {
@@ -272,7 +275,7 @@ hr#header-line {
     display: none;
 }
 
-#email-results {
+.email-results {
     line-height: 25px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -292,23 +295,33 @@ hr#header-line {
 /*    display: none;*/
 }
 
-@media (max-width: 992px) { 
-    #content-container { 
+@media (max-width: 992px) {
+    .email-results {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+
+    .email-results-item {
+        line-height: 50px;
+    }
+
+    #content-container {
         overflow: hidden;
     }
-    
-    #header-container { 
+
+    #header-container {
         overflow: hidden;
         padding-top: 40%;
         padding-bottom: 10%;
     }
-    
+
     body {
         overflow: auto;
     }
-    
+
     /* Styling the inputs to be more visible on mobile */
-    #form-content-wrapper input[type="text"], select {
+    #form-content-wrapper input[type="text"],
+    select {
         height: 50px;
         font-size: 25px;
         padding: 5px;
@@ -322,11 +335,12 @@ hr#header-line {
         font-size: 25px;
         line-height: 25px;
     }
-    
-    #incidents, #officials {
+
+    #incidents,
+    #officials {
         font-size: 25px;
     }
-    
+
     .btn {
         font-family: Fanwood, Times New Roman, Serif;
         font-size: 40px;
@@ -334,38 +348,39 @@ hr#header-line {
         width: 490px;
         margin-top: 80px;
     }
-    
+
     #thanks {
         font-size: 60px;
         margin-bottom: 100px;
     }
-    
-    #results, #missing-data {
+
+    #results,
+    #missing-data {
         font-size: 30px;
         line-height: 40px;
     }
-    
+
     #results {
         margin-bottom: 70px;
     }
-    
+
     li {
-      margin-bottom: 20px;
+        margin-bottom: 20px;
     }
 
     li:last-child {
-     margin-bottom: 0px;
+        margin-bottom: 0px;
     }
-    
+
     #blurb {
-        font-size: 30px;
-        line-height: 40px;
+        font-size: 35px;
+        line-height: 45px;
     }
-    
+
     #main-header {
         font-size: 80px;
     }
-    
+
     .officials-card {
         height: 240px;
         width: 180px;
@@ -373,7 +388,8 @@ hr#header-line {
         margin: 10px;
     }
 
-    .officials-position, .officials-email {
+    .officials-position,
+    .officials-email {
         font-size: 22px;
     }
 
@@ -382,16 +398,31 @@ hr#header-line {
     }
 }
 
-@media (min-width: 992px) { 
-    #content-container { 
+@media (min-width: 992px) {
+    .email-results-item {
+        line-height: 25px;
+    }
+
+    #content-container {
         overflow: auto;
     }
-    
+
     body {
         overflow: hidden;
     }
-    
-    #content-container, #header-container {
+
+    #content-container,
+    #header-container {
         height: 100vh;
     }
-} 
+}
+
+.email-results-item a {
+    color: rgb(10, 132, 255);
+    /*    border-bottom: 1px solid black;*/
+    vertical-align: top;
+}
+
+.right-align-anchor {
+    float: right;
+}

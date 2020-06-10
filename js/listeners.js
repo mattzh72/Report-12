@@ -25,15 +25,15 @@ $("#launch").click(() => {
         });
         
         // Add listeners
-        $("#email-results li").remove();
-        for (let [destination, body] of Object.entries(emails)) {
-            createEmailLink(destination, body);
+        $("#results .email-results-item").remove();
+        let id = 1; 
+        for (let [destination, data] of Object.entries(emails)) {
+            createEmailLinks(destination, data.body, id, position=data.position, name=data.name);
+            createCopyLinks(destination, data.body, id);
+            id++;
         }
-        $("#gmail").click(() => {
-            for (let [destination, body] of Object.entries(emails)) {
-                send(destination, body);
-            }
-        });
+        
+        $("#success-message").text(`Your prepared emails for ${results.city}, ${results.state} are below:`)
         
         // Fade in feedback and fade out form 
         $("#form-content-wrapper").fadeOut(500, () => {
