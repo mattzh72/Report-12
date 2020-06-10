@@ -50,9 +50,9 @@ $(document).ready(() => {
         $("#email-counter span").text(numEmails)
     });
 
-    $.getJSON("https://raw.githubusercontent.com/mattzh72/Think-Globally-Act-Vocally/master/data/incidents.json", function (rawIncidentsData) {
+    $.getJSON("https://raw.githubusercontent.com/mattzh72/Think-Globally-Act-Vocally/master/resources/data/incidents.json", function (rawIncidentsData) {
         $("#data-update").text(rawIncidentsData.updated_at);
-        $.getJSON("https://raw.githubusercontent.com/mattzh72/Think-Globally-Act-Vocally/master/data/contacts.json", function (rawContactsData) {
+        $.getJSON("https://raw.githubusercontent.com/mattzh72/Think-Globally-Act-Vocally/master/resources/data/contacts.json", function (rawContactsData) {
             incidents = indexIncidents(rawIncidentsData);
             contacts = indexContacts(rawContactsData);
             populateStates(incidents);
