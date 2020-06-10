@@ -119,15 +119,15 @@ function createEmailLinks(destination, body, id, position="", name="", target = 
 
 function createCopyLinks(destination, body, id, target = "#backup-option") {
     let wrapper = $('<div>', {
-        text: `Email ${id}: `,
+        text: `Email ${id}: ${destination}`,
         class: "email-results-item"
     }).appendTo($(target));
     
-    let emailLink = $('<a>', {
-        href: "#",
-        text: destination,
-        id: "backup-email-" + id,
-    }).appendTo(wrapper);
+//    let emailLink = $('<a>', {
+//        href: "#",
+//        text: destination,
+//        id: "backup-email-" + id,
+//    }).appendTo(wrapper);
 
     let copyLink = $('<a>', {
         href: "#",
@@ -150,9 +150,18 @@ function createCopyLinks(destination, body, id, target = "#backup-option") {
         $("#backup-" + id).text("Copied ✓");
     });
     
-    $("backup-email-" + id).click(($e) => {
-        $e.preventDefault();
-    });
+//    $("backup-email-" + id).click(($e) => {
+//        $e.preventDefault();
+//        const el = document.createElement('textarea');
+//        el.value = destination;
+//        el.setAttribute('readonly', '');
+//        el.style.position = 'absolute';
+//        el.style.left = '-9999px';
+//        document.body.appendChild(el);
+//        el.select();
+//        document.execCommand('copy');
+//        document.body.removeChild(el);
+//    });
 }
 
 function makeTemplate(data, template) {
