@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'Fanwood';
-  src: URL('../fonts/FanwoodText-Regular.ttf') format('truetype');
+  src: URL('../resources/fonts/FanwoodText-Regular.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Fanwood Italic';
-  src: URL('../fonts/FanwoodText-Italic.ttf') format('truetype');
+  src: URL('../resources/fonts/FanwoodText-Italic.ttf') format('truetype');
 }
 
 body {
@@ -16,10 +16,11 @@ body {
 #content-container, #header-container {
     position: relative;
     background-color: black;
-    height: 100vh;
+    height: 100%;
     width: 100%;
     font-family: "Fanwood", Times New Roman, Serif;
     overflow: auto;
+    
 }
 
 #content-container {
@@ -30,6 +31,12 @@ body {
 
 #header-container {
     background-color: black;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../resources/images/bg-1.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    overflow: hidden;
 }
 
 #main-header-wrapper {
@@ -40,13 +47,15 @@ body {
 }
 
 #main-header {
-    font-size: 65px;
+    font-size: 55px;
 }
 
 #header-content-wrapper {
-    position: absolute;
+    position: relative;
     top: 50%;
     transform: translateY(-50%);
+    margin-top: 20px;
+    margin-bottom: 20px;
     margin-left: 6%;
     margin-right: 6%;
     text-align: right;  
@@ -62,7 +71,7 @@ hr#header-line {
 
 #blurb {
     margin-top: 40px;
-    font-size: 20px;
+    font-size: 19px;
     line-height: 31px;
 }
 
@@ -81,17 +90,9 @@ hr#header-line {
     font-size: 36px;
 }
 
-#form-content-wrapper {   
-/*    display: none;*/
-/*
-    background-color: red;
-    overflow: auto;
-*/
-}
-
 #form-content-wrapper input[type="text"], select {
     width: 100%;
-    height: 29px;
+    height: 30px;
     margin-top: 5px;
     margin-bottom: 30px;
     border-radius: 0px;
@@ -193,19 +194,15 @@ hr#header-line {
     font-family: "Fanwood", "Times New Roman", Serif;
     font-size: 14px;
     word-wrap: break-word;
-    line-height: 18px;
     margin-bottom: 10px;
 }
 
 #header-container-bg {
     width: 100%; 
     height: 100%; 
+/*    position: absolute;*/
 
-    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../resources/bg-1.png') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+
 }
 
 #warning {
@@ -224,7 +221,8 @@ hr#header-line {
 }
 
 #feedback-wrapper {
-    width: 80%;
+    width: 100%;
+    background-color: white;
     border: 1px solid black;
     padding: 80px;
     margin-bottom: 60px;
@@ -242,9 +240,10 @@ hr#header-line {
 
 #feedback {
     display: none;
-    position: absolute;
+    position: relative;
     top: 50%;
-    transform: translateY(-50%);    
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);   
 }
 
 #scroll {
@@ -258,34 +257,6 @@ hr#header-line {
     transform: translateX(-50%);
     bottom: 50px;
 }
-
-@media (min-width: 576px) { 
-    #scroll {
-        display: block;
-    }
-    
-    #content-container { 
-        overflow: hidden;
-    }
-    
-    body {
-        overflow: auto;
-    }
-}
-
-@media (min-width: 768px) { 
-    #scroll {
-        display: none;
-    }
-    
-    #content-container { 
-        overflow: auto;
-    }
-    
-    body {
-        overflow: hidden;
-    }
-} 
 
 #error-messages {
     color: red;
@@ -316,3 +287,111 @@ hr#header-line {
     color: red;
     float: right;
 }
+
+#form-content-wrapper {
+/*    display: none;*/
+}
+
+@media (max-width: 992px) { 
+    #content-container { 
+        overflow: hidden;
+    }
+    
+    #header-container { 
+        overflow: hidden;
+        padding-top: 40%;
+        padding-bottom: 10%;
+    }
+    
+    body {
+        overflow: auto;
+    }
+    
+    /* Styling the inputs to be more visible on mobile */
+    #form-content-wrapper input[type="text"], select {
+        height: 50px;
+        font-size: 25px;
+        padding: 5px;
+    }
+
+    #form-content-wrapper input[type="checkbox"] {
+        font-size: 25px;
+    }
+
+    #form-content-wrapper label {
+        font-size: 25px;
+        line-height: 25px;
+    }
+    
+    #incidents, #officials {
+        font-size: 25px;
+    }
+    
+    .btn {
+        font-family: Fanwood, Times New Roman, Serif;
+        font-size: 40px;
+        height: 120px;
+        width: 490px;
+        margin-top: 80px;
+    }
+    
+    #thanks {
+        font-size: 60px;
+        margin-bottom: 100px;
+    }
+    
+    #results, #missing-data {
+        font-size: 30px;
+        line-height: 40px;
+    }
+    
+    #results {
+        margin-bottom: 70px;
+    }
+    
+    li {
+      margin-bottom: 20px;
+    }
+
+    li:last-child {
+     margin-bottom: 0px;
+    }
+    
+    #blurb {
+        font-size: 30px;
+        line-height: 40px;
+    }
+    
+    #main-header {
+        font-size: 80px;
+    }
+    
+    .officials-card {
+        height: 240px;
+        width: 180px;
+        padding: 20px;
+        margin: 10px;
+    }
+
+    .officials-position, .officials-email {
+        font-size: 22px;
+    }
+
+    .officials-name {
+        font-size: 30px;
+    }
+}
+
+@media (min-width: 992px) { 
+    #content-container { 
+        overflow: auto;
+    }
+    
+    body {
+        overflow: hidden;
+    }
+    
+    #content-container, #header-container {
+        height: 100vh;
+    }
+} 

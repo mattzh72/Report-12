@@ -147,7 +147,6 @@ function send(destination, body) {
         ("&su=Demanding Justice in Our Communities") +
         ("&body=" + encodeURIComponent(body));
 
-    alert(link);
     let tempLink = $('<a>', {
         href: link,
         target: "_blank",
