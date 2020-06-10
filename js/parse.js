@@ -2,6 +2,8 @@ const errors = {
     "Unknown Location": 1
 };
 
+const defaultContact = {DEFAULT: {name: "[NAME]", email: "[YOUR OFFICIAL'S EMAIL HERE]"}};
+
 function indexIncidents(data) {
     var locations = {};
 
@@ -49,7 +51,7 @@ function findOfficials(contacts, state, city) {
         });
     }
     
-    return result;
+    return result !== null? result : defaultContact;
 }
 
 function findIncidents(incidents, state, city) {

@@ -1,6 +1,5 @@
 const requiredKeys = {
     name: 1,
-    email: 1,
     state: 1,
     city: 1,
     resident: 1
@@ -9,8 +8,6 @@ const requiredKeys = {
 function verify() {
     // Check name is filled out
     let name = $("#name").val().trim();
-    // Check email is filled out
-    let email = $("#email").val().trim();
     // Check state is selected
     let state = $("#state").val();
     // Check city is selected
@@ -24,7 +21,6 @@ function verify() {
     //Check university
     let university = $("#university").val().trim();
 
-    let validEmail = emailRegex.test(email);
     let validName = name.length > 0;
     let validState = state !== null;
     let validCity = city !== null;
@@ -32,34 +28,31 @@ function verify() {
 
     let errors = [];
     if (!validName) {
-        errors.push("Name");
-    }
-
-    if (!validEmail) {
-        errors.push("Email Address");
+        errors.push("name");
     }
 
     if (!validState) {
-        errors.push("State");
+        errors.push("state");
     }
 
     if (!validCity) {
-        errors.push("City");
+        errors.push("city");
     }
 
     if (!validAge) {
-        errors.push("Age");
+        errors.push("age");
     }
 
-    clearErrorMessage();
+    $("#form-content-wrapper label .error-msg").css("display", "none");
     if (errors.length > 0) {
-        setErrorMessage(errors);
+        errors.forEach(error => {
+            $(`label[for="${error}"] .error-msg`).css("display", "block");
+        });
         return null;
     }
 
     let result = {
         name: name,
-        email: email,
         state: state,
         city: city,
         resident: resident
@@ -81,16 +74,15 @@ function draftEmails(data, template) {
     let emails = {}; // indexed by email
     for (let [position, contact] of Object.entries(data.officials)) {
         let template = master;
-        if (position == "Mayor") 
-        {
+        if (position == "Mayor") {
             template = template.replace("<<Recipient>>", "Mayor " + contact.name);
             emails[contact.email] = template;
-        } 
-        else 
-        {
+        } else if (position == "DEFAULT") {
+            template = template.replace("<<Recipient>>", "[OFFICIAL ROLE] " + contact.name);
+        } else {
             template = template.replace("<<Recipient>>", "Council Rep " + contact.name);
-            emails[contact.email] = template;
         }
+        emails[contact.email] = template;
     }
     return emails;
 }
@@ -115,7 +107,7 @@ function createEmailLink(destination, body) {
         document.execCommand('copy');
         document.body.removeChild(el);
     });
-    
+
     emailLink.appendTo(item);
     copyLink.appendTo(item);
     item.appendTo($("#email-results"));
@@ -135,39 +127,24 @@ function makeTemplate(data, template) {
         incidentText += `\n`;
     });
     template = template.replace("<<Incidents>>", incidentText);
-    if (data.resident) 
-    {
+    if (data.resident) {
         template = template.replace("<<Residency>>", 'I am also one of your constituents. ');
-    } else 
-    {
+    } else {
         template = template.replace("<<Residency>>", "");
     }
 
-    if (data.university && data.university !== "") 
-    {
+    if (data.university && data.university !== "") {
         template = template.replace("<<University>>", data.university);
-    } else 
-    {
+    } else {
         template = template.replace("<<University>>", "");
     }
     return template;
 }
 
-function setErrorMessage(errors) {
-    let msg = "Missing: ";
-    msg += errors;
-    msg = msg.split(",").join(", ") + ".";
-    $("#error-messages").text(msg);
-}
-
-function clearErrorMessage() {
-    $("#error-messages").text("");
-}
-
 function send(destination, body) {
     let link = "https://mail.google.com/mail/?view=cm&fs=1" +
-        (destination ? ("&to=" + destination) : "") +
-        ("&su=Demanding Justice in Your Community") +
+        (destination ? ("&to=" + encodeURIComponent(destination)) : "") +
+        ("&su=Demanding Justice in Our Communities") +
         ("&body=" + encodeURIComponent(body));
 
     alert(link);

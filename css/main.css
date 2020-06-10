@@ -62,7 +62,7 @@ hr#header-line {
 
 #blurb {
     margin-top: 40px;
-    font-size: 18px;
+    font-size: 20px;
     line-height: 31px;
 }
 
@@ -93,9 +93,9 @@ hr#header-line {
     width: 100%;
     height: 29px;
     margin-top: 5px;
+    margin-bottom: 30px;
     border-radius: 0px;
     border: 1px solid black;
-    margin-bottom: 30px;
     font-family: Fanwood, Times New Roman, Serif;
     font-size: 16px;
     -webkit-transition: all 0.30s ease-in-out;
@@ -301,8 +301,6 @@ hr#header-line {
     display: none;
 }
 
-
-
 #email-results {
     line-height: 25px;
     margin-top: 20px;
@@ -311,4 +309,10 @@ hr#header-line {
 
 .hidden-textarea {
     display: none;
+}
+
+.error-msg {
+    display: none;
+    color: red;
+    float: right;
 }
