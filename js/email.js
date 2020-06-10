@@ -142,14 +142,15 @@ function makeTemplate(data, template) {
 }
 
 function send(destination, body) {
-    let link = "https://mail.google.com/mail/?view=cm&fs=1" +
-        (destination ? ("&to=" + encodeURIComponent(destination)) : "") +
-        ("&su=Demanding Justice in Our Communities") +
+    let link = "mailto:" +
+        (destination ? (encodeURIComponent(destination)) : "") +
+        ("?subject=Demanding Justice in Our Communities") +
         ("&body=" + encodeURIComponent(body));
 
     let tempLink = $('<a>', {
         href: link,
         target: "_blank",
+        rel: "noopener noreferrer",
         class: "temporary-email-link"
     }).appendTo('body');
     tempLink[0].click();
