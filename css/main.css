@@ -228,7 +228,7 @@ select {
     background-color: white;
     border: 1px solid black;
     padding: 80px;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
 }
 
 #thanks {
@@ -388,7 +388,7 @@ select {
     }
 
     #content-container {
-        overflow: hidden;
+        overflow: auto;
     }
 
     #header-container {
