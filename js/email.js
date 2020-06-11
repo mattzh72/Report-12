@@ -69,102 +69,27 @@ function verify() {
     return result;
 }
 
-function draftEmails(data, template) {
-    let master = makeTemplate(data, template);
-    let emails = {}; // indexed by email
-    for (let [position, contact] of Object.entries(data.officials)) {
-        let template = master;
-        if (position == "Mayor") {
-            position = "Mayor ";
-            template = template.replace("<<Recipient>>", "Mayor " + contact.name);
-            emails[contact.email] = template;
-        } else if (position == "DEFAULT") {
-            position = ""; // clear out for display purposes
-            contact.name = ""; // clear out for display purposes
-            template = template.replace("<<Recipient>>", "[OFFICIAL ROLE] " + contact.name);
-        } else {
-            position = "Council Rep ";
-            template = template.replace("<<Recipient>>", "Council Rep " + contact.name);
-        }
-        
-        emails[contact.email] = {body: template, name: contact.name, position: position};
-    }
-    return emails;
-}
-
-function createEmailLinks(destination, body, id, position="", name="", target = "#primary-option") {
-    let link = "mailto:" +
-        (destination ? (encodeURIComponent(destination)) : "") +
-        ("?subject=Demanding Justice in Our Communities") +
-        ("&body=" + encodeURIComponent(body));
-
-    let wrapper = $('<div>', {
-        text: `Email ${id}: ${position}${name}`,
-        class: "email-results-item"
-    });
-    let emailLink = $('<a>', {
-        href: link,
-        target: "_blank",
-        rel: "noopener noreferrer",
-        text: "Send Email",
-        id: "primary-" + id,
-        class:"right-align-anchor"
-    })
-    $("#primary-" + id).click(() => {
-        $("#primary-" + id).text("Sent! ✓");
-    });
-    emailLink.appendTo(wrapper);
-    wrapper.appendTo($(target));
-}
-
-function createCopyLinks(destination, body, id, target = "#backup-option") {
-    let wrapper = $('<div>', {
-        text: `Email ${id}: ${destination}`,
-        class: "email-results-item"
-    }).appendTo($(target));
+function populateEmailPreview(data, template) {
+    let body = fillTemplate(data, template);
     
-//    let emailLink = $('<a>', {
-//        href: "#",
-//        text: destination,
-//        id: "backup-email-" + id,
-//    }).appendTo(wrapper);
-
-    let copyLink = $('<a>', {
-        href: "#",
-        text: "Copy Text",
-        id: "backup-" + id,
-        class:"right-align-anchor"
-    }).appendTo(wrapper);
-
-    $("#backup-" + id).click(($e) => {
-        $e.preventDefault();
-        const el = document.createElement('textarea');
-        el.value = body;
-        el.setAttribute('readonly', '');
-        el.style.position = 'absolute';
-        el.style.left = '-9999px';
-        document.body.appendChild(el);
-        el.select();
-        document.execCommand('copy');
-        document.body.removeChild(el);
-        $("#backup-" + id).text("Copied ✓");
+    let destinations = [];
+    console.log(data);
+    Object.values(data.officials).forEach(contact => {
+        destinations.push(contact.email);
     });
     
-//    $("backup-email-" + id).click(($e) => {
-//        $e.preventDefault();
-//        const el = document.createElement('textarea');
-//        el.value = destination;
-//        el.setAttribute('readonly', '');
-//        el.style.position = 'absolute';
-//        el.style.left = '-9999px';
-//        document.body.appendChild(el);
-//        el.select();
-//        document.execCommand('copy');
-//        document.body.removeChild(el);
-//    });
+    $("#success-message span").text(`${data.city}, ${data.state}`);
+    $("#mock-email-address span").text(destinations.toString().split(",").join(", "));
+    $("#mock-email-subject span").text(`Demanding Justice in ${data.city}, ${data.state}`);
+    $("#mock-email-body").val(body);
+
+    $("#send").click(() => {
+        send(destinations, body);
+    });
 }
 
-function makeTemplate(data, template) {
+function fillTemplate(data, template) {
+    template = template.replace("<<Location>>", data.city + ", " + data.state);
     template = template.replace("<<Location>>", data.city + ", " + data.state);
     template = template.replace("<<Name>>", data.name);
     template = template.replace("<<Name>>", data.name); // One at the end, this is a dumb solution but whatever
@@ -186,9 +111,9 @@ function makeTemplate(data, template) {
     return template;
 }
 
-function send(destination, body) {
+function send(destinations, body) {
     let link = "mailto:" +
-        (destination ? (encodeURIComponent(destination)) : "") +
+        (destinations ? (encodeURIComponent(destinations.toString())) : "") +
         ("?subject=Demanding Justice in Our Communities") +
         ("&body=" + encodeURIComponent(body));
 

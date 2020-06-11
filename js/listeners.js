@@ -10,30 +10,55 @@ $("#return").click(() => {
     });
 });
 
+//function populateEmailPreview(city, state, destinations, body) {
+//    $("#mock-email-address span").text(destinations.toString().split(",").join(", "));
+//    $("#mock-email-subject span").text(`Demanding Justice in ${city}, ${state}`);
+//    $("#mock-email-body").val(body);
+//
+//    $("#send").click(() => {
+//        send(destinations, body);
+//    });
+//}
+//
+//function fillTemplate(data, template) {
+//    template = template.replace("<<Location>>", data.city + ", " + data.state);
+//    template = template.replace("<<Location>>", data.city + ", " + data.state);
+//    template = template.replace("<<Name>>", data.name);
+//    template = template.replace("<<Name>>", data.name); // One at the end, this is a dumb solution but whatever
+//    template = template.replace("<<Age>>", data.age);
+//    let incidentText = "INCIDENTS:\n";
+//    data.incidents.forEach(incident => {
+//        incidentText += `"${incident.name}"\n`;
+//        incident.links.forEach((link, index) => {
+//            incidentText += `(${index + 1}) ${link}\n`;
+//        });
+//        incidentText += `\n`;
+//    });
+//    template = template.replace("<<Incidents>>", incidentText);
+//    template = template.replace("<<Residency>>", 
+//                                data.resident ? 'I am also one of your constituents. ': "");
+//    template = template.replace("<<University>>", 
+//                                data.university && data.university !== "" ? data.university : "");
+//
+//    return template;
+//}
+
 $("#launch").click(() => {
     let results = verify();
     if (results !== null && template !== null) {
         // Template emails
         results.officials = findOfficials(contacts, results.state, results.city);
         results.incidents = findIncidents(incidents, results.state, results.city);
-        let emails = draftEmails(results, template);
+        let body = fillTemplate(results, template);
         
         // Sync new email count to Firebase and update DOM
-        addNumEmails(Object.keys(emails).length).then((numEmails) => {
+        incrementEmailCount().then((numEmails) => {
             console.log(numEmails);
             $("#email-counter span").text(numEmails)
         });
         
         // Add listeners
-        $("#results .email-results-item").remove();
-        let id = 1; 
-        for (let [destination, data] of Object.entries(emails)) {
-            createEmailLinks(destination, data.body, id, position=data.position, name=data.name);
-            createCopyLinks(destination, data.body, id);
-            id++;
-        }
-        
-        $("#success-message").text(`Your prepared emails for ${results.city}, ${results.state} are below:`)
+        populateEmailPreview(results, template);
         
         // Fade in feedback and fade out form 
         $("#form-content-wrapper").fadeOut(500, () => {

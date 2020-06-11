@@ -114,7 +114,7 @@ function crossValidate(incidentData, contactData) {
 
 
 function populateStates(locations) {
-    Object.keys(locations).forEach(state => {
+    Object.keys(locations).sort().forEach(state => {
         $('#state').append(new Option(state, state));
     });
 }
@@ -126,8 +126,7 @@ function populateCities(locations, state) {
     });
 
     $("#city option").remove();
-
-    Object.keys(cities).forEach(city => {
+    Object.keys(cities).sort().forEach(city => {
         $('#city').append(new Option(city, city));
     });
 }

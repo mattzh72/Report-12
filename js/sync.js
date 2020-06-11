@@ -24,7 +24,7 @@ function getNumEmails() {
     });
 }
 
-function addNumEmails(num) {
+function incrementEmailCount(num=1) {
     return db.collection(COLLECTION).doc(DOCUMENT).get().then(doc => {
         let newTotal = doc.data()[FIELD] + num;
         db.collection(COLLECTION).doc(DOCUMENT).set({
@@ -34,17 +34,3 @@ function addNumEmails(num) {
         return newTotal;
     });
 }
-
-
-//function
-//db.collection("cities").doc("LA").set({
-//    name: "Los Angeles",
-//    state: "CA",
-//    country: "USA"
-//})
-//.then(function() {
-//    console.log("Document successfully written!");
-//})
-//.catch(function(error) {
-//    console.error("Error writing document: ", error);
-//});

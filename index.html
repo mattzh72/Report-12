@@ -36,8 +36,9 @@
         <div class="col-lg-6 col-md-12 no-gutters">
             <div id="content-container">
                 <div id="form-content-wrapper">
+                    <div id="instructions">Instructions: Fill out the required fields (*), and we will search for city officials and police brutality incidents in the area.</div>
                     <label for="name">Name*<span class="error-msg">This is required!</span></label>
-                    <input type="text" id="name" name="name" minlength="1">
+                    <input type="text" value="a" id="name" name="name" minlength="1">
 
 
                     <label for="state">State*<span class="error-msg">This is required!</span></label><br>
@@ -51,7 +52,7 @@
                     </select>
 
                     <label for="age">Age*<span class="error-msg">This is required!</span></label><br>
-                    <input type="text" id="age" name="age" minlength="1">
+                    <input type="text" value="23", id="age" name="age" minlength="1">
 
                     <label for="university">University (if currently enrolled)</label><br>
                     <input type="text" id="university" name="university" minlength="1">
@@ -77,26 +78,19 @@
                     <div id="feedback-wrapper">
                         <div id="thanks">THANK YOU.</div>
                         <div id="results">
-                            <span id="success-message"></span>
-                            <div id="primary-option" class="email-results">
-                                <!--
-                                <div class="email-results-item">Email 1: mattzh72@gmailasdf.com <a href="">Send Email</a></div>
-                                <div class="email-results-item">Email 1: mattzh72@gmaisdfl.com <a href="">Send Email</a></div>
-                                <div class="email-results-item">Email 1: mattzh72asdf@gmail.com <a href="">Send Email</a></div>
-                                <div class="email-results-item">Email 1: mattzh7s2@gmail.com <a href="">Send Email</a></div>
--->
-                            </div>
-                            Having trouble sending the email? Click <span style="font-family: 'Fanwood Italic'">"Copy Text"</span>, and paste it manually into your email client.
-                            <div id="backup-option" class="email-results">
-                                <!--
-                                <div class="email-results-item">Email 1: mattzh72@gmailasdf.com <a href="">Copy Text</a></div>
-                                <div class="email-results-item">Email 1: mattzh72@gmaisdfl.com <a href="">Copy Text</a></div>
-                                <div class="email-results-item">Email 1: mattzh72asdf@gmail.com <a href="">Copy Text</a></div>
-                                <div class="email-results-item">Email 1: mattzh7s2@gmail.com <a href="">Copy Text</a></div>
--->
-                            </div>
+                            <span id="success-message">Here's a preview of your email to <span></span>:</span>
+                            <div id="mock-email">
+                                <div id="mock-email-address">To: <span></span></div>
+                                <div id="mock-email-subject">Subject: <span></span></div>
 
+                                <textarea id="mock-email-body" readonly></textarea>
+
+                            </div>
+                            <div id="email-actions">
+                                <button type="button" class="btn" id="send">Send</button>
+                            </div>
                         </div>
+                        <div id="email-issues-message">Having problems sending the email? Simply copy and paste the above information into your favorite email client.</div>
                         <div id="missing-data">We're working hard, but we're not finished yet. <a href="https://forms.gle/48XVxmAuCgPB9B8P8">Report</a> a problem using the site or <a href="https://forms.gle/ZGgnPKMF3jHgPth27">contribute</a> to our data!
                         </div>
                         <!--
