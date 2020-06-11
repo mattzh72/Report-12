@@ -77,7 +77,6 @@ function populateEmailPreview(data, template) {
         destinations.push(contact.email);
     });
 
-    $("#success-message span").text(`${data.city}, ${data.state}`);
     $("#mock-email-address").text(destinations.toString().split(",").join(", "));
     $("#mock-email-subject").text(`Re: Demanding Justice in ${data.city}, ${data.state}`);
     $("#mock-email-body").val(body);

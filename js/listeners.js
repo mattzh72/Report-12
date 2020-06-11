@@ -4,10 +4,9 @@ var template = null;
 
 $("#return").click(() => {
     // Reset sent button
-    $("#send").text("Sent ✓");
-    
     $("#feedback").fadeOut(500, () => {
         $("#form-content-wrapper ").fadeIn(500);
+        $("#send").text("Send");
     });
 });
 
@@ -17,12 +16,11 @@ $("#launch").click(() => {
         // Template emails
         results.officials = findOfficials(contacts, results.state, results.city);
         results.incidents = findIncidents(incidents, results.state, results.city);
-        let body = fillTemplate(results, template);
         
         $("#thanks span").text(results.name.toUpperCase());
         // Sync new email count to Firebase and update DOM
-        incrementEmailCount().then((numEmails) => {
-            console.log(numEmails);
+        incrementEmailCount(num=results.incidents.length).then((numEmails) => {
+            $("#success-message span").text(numEmails);
             $("#email-counter span").text(numEmails)
         });
         

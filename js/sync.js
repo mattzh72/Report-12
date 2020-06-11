@@ -27,6 +27,8 @@ function getNumEmails() {
 function incrementEmailCount(num=1) {
     return db.collection(COLLECTION).doc(DOCUMENT).get().then(doc => {
         let newTotal = doc.data()[FIELD] + num;
+        console.log(doc.data()[FIELD]);
+        console.log(num);
         db.collection(COLLECTION).doc(DOCUMENT).set({
             [FIELD]: newTotal
         });

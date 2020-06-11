@@ -42,11 +42,11 @@
                     </div>
 
                     <div id="blurb">
-                        <span>Protests have occurred across every one of the 50 states in America during the first week of June in 2020. While millions marched to protest the killing of George Floyd and police brutality, countless police officers are documented using excessive force against peaceful protesters. Many of our representatives who are elected to represent us are silent on this issue and not using their platforms for change. <br><br>We've collected data on over 100 videos of police brutality occurring at protests nationwide, and the information of local city officials in those cities. Put in your name and any location (you don't need to be a resident) and we will draft a template with all the evidence linked. All you need to do is click send. #BlackLivesMatter</span>
+                        <span>We've collected data on over 100 videos of police brutality occurring at protests nationwide, and the information of local city officials in those cities. Put in your name and any location (you don't need to be a resident) and we will draft a template with all the evidence linked. All you need to do is click send. #BlackLivesMatter</span>
                     </div>
 
                     <div id="email-counter">
-                        <span></span> emails drafted &amp; counting...
+                        <span></span> incidents reported &amp; counting...
                     </div>
                 </div>
                 <div id="scroll">Scroll down to send your email....</div>
@@ -60,13 +60,13 @@
             <div id="content-container">
                 <div id="form-content-wrapper">
                     <div id="instructions">Instructions: Fill out the required fields (*), and we will search for city officials and police brutality incidents in the area.</div>
-                    <label for="name">Name*<span class="error-msg">This is required!</span></label>
+                    <label for="name">Name*<span class="error-msg">Please enter your name.</span></label>
                     <input type="text" id="name" name="name" minlength="1">
 
 
-                    <label for="state">State*<span class="error-msg">This is required!</span></label><br>
+                    <label for="state">State*<span class="error-msg">Please pick a state.</span></label><br>
                     <select name="state" id="state">
-                        <option value="" selected disabled hidden>Choose your state...</option>
+                        <option value="" selected disabled hidden>Please pick a city.</option>
                     </select>
 
                     <label for="city">City*<span class="error-msg">This is required!</span></label><br>
@@ -74,7 +74,7 @@
                         <option value="" selected disabled hidden>Choose your city...</option>
                     </select>
 
-                    <label for="age">Age*<span class="error-msg">This is required!</span></label><br>
+                    <label for="age">Age*<span class="error-msg">Enter a valid number!</span></label><br>
                     <input type="text" id="age" name="age" minlength="1">
 
                     <label for="university">University (if currently enrolled)</label><br>
@@ -101,7 +101,7 @@
                     <div id="feedback-wrapper">
                         <div id="thanks">THANK YOU, <span></span>.</div>
                         <div id="results">
-                            <span id="success-message">Here's a preview of your email to <span></span>:</span>
+                            <span id="success-message">You've successfully reported incident #<span id="num-emails"></span>. Here's a preview:</span>
                             <div id="mock-email">
                                 <textarea id="mock-email-address" readonly></textarea>
                                 <textarea id="mock-email-subject" readonly></textarea>

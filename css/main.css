@@ -48,7 +48,7 @@ body {
 }
 
 #main-header {
-    font-size: 55px;
+    font-size: 45px;
 }
 
 #header-content-wrapper {
@@ -57,7 +57,7 @@ body {
     transform: translateY(-50%);
     margin-top: 20px;
     margin-bottom: 20px;
-    margin-left: 6%;
+    margin-left: 20%;
     margin-right: 6%;
     text-align: right;
     color: white;
@@ -72,8 +72,8 @@ hr#header-line {
 
 #blurb {
     margin-top: 40px;
-    font-size: 19px;
-    line-height: 31px;
+    font-size: 25px;
+    line-height: 37px;
 }
 
 #disclaimer {
@@ -302,11 +302,11 @@ select {
 }
 
 #instructions {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     font-family: "Fanwood Italic";
     border: 1px solid black;
     padding: 10px;
-    font-size: 15px;
+    font-size: 20px;
 }
 
 #mock-email-address,
