@@ -6,14 +6,30 @@
     <meta name="description" content="Email your city officials about documented local police brutality cases.">
     <meta name="keywords" content="BLM, black lives matter, brutality, social justice, officials, politics">
     <meta name="author" content="Matt Zhou">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- TODO: ADD VIEWPORT META -->
+
     <title>Think Globally, Act Vocally</title>
     <link rel="icon" type="image/png" href="./resources/images/favicons/favicon-32x32.png">
     <link rel="stylesheet" type="text/css" href="css/bootstrap-grid.min.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    
+    <!-- Schema protocol -->
+    <meta itemprop="name" content="Think Globally, Act Vocally">
+    <meta itemprop="description" content="Email city officials and council members to report local police bruality incidents.">
+    <meta itemprop="image" content="https://useyourvoice.netlify.app/">
 
-    <meta property="og:description" content="Email your city officials about documented local cases of police brutality." />
-    <meta property="og:image" content="./resources/images/bg-3.png" />
+    <!-- Facebook Open Graph protocol -->
+    <meta property="og:title" content="Think Globally, Act Vocally">
+    <meta property="og:site_name" content="https://useyourvoice.netlify.app/">
+    <meta property="og:description" content="Email city officials and council members to report local police bruality incidents.">
+    <meta property="og:image" content="./resources/images/bg-3.png">
+
+    <!-- Twitter card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Think Globally, Act Vocally">
+    <meta name="twitter:image" content="https://useyourvoice.netlify.app/">
+    <meta name="twitter:description" content="Email city officials and council members to report local police bruality incidents.">
 </head>
 
 <body>
@@ -35,7 +51,7 @@
                 </div>
                 <div id="scroll">Scroll down to send your email....</div>
                 <div id="disclaimer">
-                    <span style="float:left;">Data was last updated at: <span id="data-update"></span>.</span>
+                    <span style="float:left;">Data from <a href="https://www.reddit.com/r/2020PoliceBrutality/comments/gvllqc/megathread_current_incident_reports_list/?utm_source=share&utm_medium=ios_app&utm_name=iossmf" style="color: white;">r/2020PoliceBrutality</a> @ <span id="data-update"></span>.</span>
                     <!--                    <span style="margin-left: 100px;;">*Disclaimer: We do not store your personal information.</span>-->
                 </div>
             </div>
@@ -81,7 +97,7 @@
                     <div id="error-messages"></div>
                 </div>
 
-                <div id="feedback">
+                 <div id="feedback">
                     <div id="feedback-wrapper">
                         <div id="thanks">THANK YOU, <span></span>.</div>
                         <div id="results">
@@ -100,13 +116,6 @@
                         <div id="email-issues-message">Having problems sending the email? Click on the boxes above to copy the text, and then paste it into your favorite email client.</div>
                         <div id="missing-data">We're working hard, but we're not finished yet. <a href="https://forms.gle/48XVxmAuCgPB9B8P8">Report</a> a problem using the site or <a href="https://forms.gle/ZGgnPKMF3jHgPth27">contribute</a> to our data!
                         </div>
-                        <!--
-                        <div id="Credits">
-                            <li><a href="https://www.reddit.com/r/2020PoliceBrutality/">r/2020PoliceBrutality</a> tracks incidents.</li>
-                            <li>matt made the site.</li>
-                            <li>vidit collected data.</li>
-                        </div>
--->
                     </div>
 
                     <button type="button" class="btn" id="return">⟵ RETURN TO FORM</button>
