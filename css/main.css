@@ -242,7 +242,7 @@ select {
 }
 
 #feedback {
-    /*        display: none;*/
+            display: none;
     position: relative;
     top: 50%;
     left: 50%;
@@ -292,7 +292,7 @@ select {
 }
 
 #form-content-wrapper {
-    display: none;
+/*    display: none;*/
 }
 
 .email-results-item a {

@@ -51,6 +51,7 @@ $("#launch").click(() => {
         results.incidents = findIncidents(incidents, results.state, results.city);
         let body = fillTemplate(results, template);
         
+        $("#thanks span").text(results.name);
         // Sync new email count to Firebase and update DOM
         incrementEmailCount().then((numEmails) => {
             console.log(numEmails);
