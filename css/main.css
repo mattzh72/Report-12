@@ -321,13 +321,12 @@ select {
     padding: 5px;
     font-size: 15px;
     word-wrap: break-word;
+    resize: none;
+    width: 100%;
 }
 
 #mock-email-body {
-    resize: none;
     height: 200px;
-    width: 100%;
-    font-family: "Fanwood", "Times New Roman", Serif;
 }
 
 #mock-email {
@@ -369,8 +368,7 @@ select {
     }
 
     #mock-email-body {
-        height: 300px;
-        font-size: 23px;
+        height: 350px;
     }
 
     #instructions {

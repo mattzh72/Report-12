@@ -183,10 +183,12 @@ function populateOfficials(contacts, state, city) {
 }
 
 function createOfficialsCard(name, position, email, id) {
-    $('<div>', {
+    let card = $('<div>', {
         class: "officials-card",
         id: id
     }).appendTo('#officials');
+    
+    $("#" + id).tilt();
 
     $('<div>', {
         class: "officials-name",

@@ -71,20 +71,40 @@ function verify() {
 
 function populateEmailPreview(data, template) {
     let body = fillTemplate(data, template);
-    
+
     let destinations = [];
     console.log(data);
     Object.values(data.officials).forEach(contact => {
         destinations.push(contact.email);
     });
-    
+
     $("#success-message span").text(`${data.city}, ${data.state}`);
-    $("#mock-email-address span").text(destinations.toString().split(",").join(", "));
-    $("#mock-email-subject span").text(`Demanding Justice in ${data.city}, ${data.state}`);
+    $("#mock-email-address").text(destinations.toString().split(",").join(", "));
+    $("#mock-email-subject").text(`Re: Demanding Justice in ${data.city}, ${data.state}`);
     $("#mock-email-body").val(body);
 
+    $("#mock-email-address").unbind('click');
+    $("#mock-email-address").click(() => {
+        $("#mock-email-address").select();
+        document.execCommand('copy');
+    });
+    
+    $("#mock-email-subject").unbind('click');
+    $("#mock-email-subject").click(() => {
+        $("#mock-email-subject").select();
+        document.execCommand('copy');
+    });
+    
+    $("#mock-email-body").unbind('click');
+    $("#mock-email-body").click(() => {
+        $("#mock-email-body").select();
+        document.execCommand('copy');
+    });
+
+    $("#send").unbind('click');
     $("#send").click(() => {
         send(destinations, body);
+        $("#send").text("Sent ✓");
     });
 }
 
@@ -103,10 +123,10 @@ function fillTemplate(data, template) {
         incidentText += `\n`;
     });
     template = template.replace("<<Incidents>>", incidentText);
-    template = template.replace("<<Residency>>", 
-                                data.resident ? 'I am also one of your constituents. ': "");
-    template = template.replace("<<University>>", 
-                                data.university && data.university !== "" ? data.university : "");
+    template = template.replace("<<Residency>>",
+        data.resident ? 'I am also one of your constituents. ' : "");
+    template = template.replace("<<University>>",
+        data.university && data.university !== "" ? data.university : "");
 
     return template;
 }
@@ -120,7 +140,6 @@ function send(destinations, body) {
     let tempLink = $('<a>', {
         href: link,
         target: "_blank",
-        rel: "noopener noreferrer",
         class: "temporary-email-link"
     }).appendTo('body');
     tempLink[0].click();
