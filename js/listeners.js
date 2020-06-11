@@ -1,5 +1,3 @@
-const emailRegex = /^\w+([-+.'][^\s]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-
 var incidents = null;
 var contacts = null;
 var template = null;

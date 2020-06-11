@@ -73,7 +73,6 @@ function populateEmailPreview(data, template) {
     let body = fillTemplate(data, template);
 
     let destinations = [];
-    console.log(data);
     Object.values(data.officials).forEach(contact => {
         destinations.push(contact.email);
     });
@@ -88,13 +87,13 @@ function populateEmailPreview(data, template) {
         $("#mock-email-address").select();
         document.execCommand('copy');
     });
-    
+
     $("#mock-email-subject").unbind('click');
     $("#mock-email-subject").click(() => {
         $("#mock-email-subject").select();
         document.execCommand('copy');
     });
-    
+
     $("#mock-email-body").unbind('click');
     $("#mock-email-body").click(() => {
         $("#mock-email-body").select();
@@ -132,13 +131,20 @@ function fillTemplate(data, template) {
 }
 
 function send(destinations, body) {
-    let link = "mailto:" +
-        (destinations ? (encodeURIComponent(destinations.toString())) : "") +
-        ("?subject=Demanding Justice in Our Communities") +
-        ("&body=" + encodeURIComponent(body));
+    let emailURL = "https://mail.google.com/mail/?view=cm&fs=1" +
+        (destinations ? ("&to=" + encodeURIComponent(destinations.toString())) : "") +
+        ("&su=" + encodeURI("Demanding Justice in Our Communities")) + ("&body=" + encodeURIComponent(body));
+
+    if (IS_MOBILE) {
+        emailURL = "mailto:" +
+            (destinations ? (encodeURIComponent(destinations.toString())) : "") +
+            ("?subject=" + encodeURI("Demanding Justice in Our Communities")) +
+            ("&body=" + encodeURIComponent(body));
+    }
+    console.log(IS_MOBILE);
 
     let tempLink = $('<a>', {
-        href: link,
+        href: emailURL,
         target: "_blank",
         class: "temporary-email-link"
     }).appendTo('body');

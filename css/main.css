@@ -489,3 +489,7 @@ select {
         height: 100vh;
     }
 }
+
+#future-steps {
+    margin-top: 20px;
+}
