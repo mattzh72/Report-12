@@ -238,11 +238,11 @@ select {
 }
 
 #missing-data {
-/*        margin-bottom: 10px;*/
+    /*        margin-bottom: 10px;*/
 }
 
 #feedback {
-        display: none;
+    /*        display: none;*/
     position: relative;
     top: 50%;
     left: 50%;
@@ -292,7 +292,7 @@ select {
 }
 
 #form-content-wrapper {
-/*    display: none;*/
+    display: none;
 }
 
 .email-results-item a {
@@ -313,7 +313,9 @@ select {
     font-size: 15px;
 }
 
-#mock-email-address, #mock-email-subject, #mock-email-body {
+#mock-email-address,
+#mock-email-subject,
+#mock-email-body {
     margin-top: 10px;
     border: 1px solid black;
     padding: 5px;
@@ -333,24 +335,49 @@ select {
     margin-bottom: 10px;
 }
 
+#send {
+    height: 40px;
+    width: auto;
+    padding-right: 30px;
+    padding-left: 30px;
+    font-size: 20px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+#email-issues-message {
+    margin-bottom: 20px;
+}
+
 @media (max-width: 992px) {
-    #mock-email-address, #mock-email-subject, #mock-email-body {
+    #send {
+        height: 70px;
+        width: auto;
+        padding-right: 60px;
+        padding-left: 60px;
+        font-size: 40px;
+        margin-top: 20px;
+    }
+
+    #mock-email-address,
+    #mock-email-subject,
+    #mock-email-body {
         margin-top: 10px;
         padding: 10px;
         font-size: 23px;
         word-wrap: break-word;
     }
-    
+
     #mock-email-body {
         height: 300px;
         font-size: 23px;
     }
-    
+
     #instructions {
         font-size: 25px;
         margin-bottom: 40px;
     }
-    
+
     .email-results {
         margin-top: 50px;
         margin-bottom: 50px;
@@ -410,7 +437,8 @@ select {
     }
 
     #results,
-    #missing-data {
+    #missing-data,
+    #email-issues-message {
         font-size: 30px;
         line-height: 40px;
     }
@@ -470,18 +498,4 @@ select {
     #header-container {
         height: 100vh;
     }
-}
-#send, #copy {
-    height: 40px;
-    width: auto;  
-    padding-right: 30px;
-    padding-left: 30px;
-    font-size: 20px;
-    margin-bottom: 0px;
-}
-
-
-
-#email-issues-message {
-    margin-bottom: 20px;
 }
