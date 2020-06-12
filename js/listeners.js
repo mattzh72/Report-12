@@ -2,11 +2,20 @@ var incidents = null;
 var contacts = null;
 var template = null;
 
-$("#return").click(() => {
+const FADE_RATE = 300;
+
+$("#return-search").click(() => {
     // Reset sent button
-    $("#feedback").fadeOut(500, () => {
-        $("#form-content-wrapper ").fadeIn(500);
+    $("#feedback").fadeOut(FADE_RATE, () => {
+        $("#search-results").fadeIn(FADE_RATE);
         $("#send").text("Send");
+    });
+});
+
+$("#return-form").click(() => {
+    // Reset sent button
+    $("#search-results").fadeOut(FADE_RATE, () => {
+        $("#form").fadeIn(FADE_RATE);
     });
 });
 
@@ -28,8 +37,21 @@ $("#launch").click(() => {
         populateEmailPreview(results, template);
         
         // Fade in feedback and fade out form 
-        $("#form-content-wrapper").fadeOut(500, () => {
-            $("#feedback").fadeIn(500);
+        $("#search-results").fadeOut(FADE_RATE, () => {
+            $("#feedback").fadeIn(FADE_RATE);
+        });
+    }
+});
+
+$("#search").click(() => {
+    let results = verify();
+    if (results !== null && template !== null) {
+        populateIncidents(incidents, $("#state").val(), $("#city").val());
+        populateOfficials(contacts, $("#state").val(), $("#city").val());
+
+        // Fade in search results and fade out form 
+        $("#form").fadeOut(FADE_RATE, () => {
+            $("#search-results").fadeIn(FADE_RATE);
         });
     }
 });
@@ -59,12 +81,5 @@ $(document).ready(() => {
 $("#state").on('change', () => {
     if (incidents !== null && contacts !== null) {
         populateCities(incidents, $("#state").val());
-        populateIncidents(incidents, $("#state").val(), $("#city").val());
-        populateOfficials(contacts, $("#state").val(), $("#city").val());
-
-        $("#city").change(() => {
-            populateIncidents(incidents, $("#state").val(), $("#city").val());
-            populateOfficials(contacts, $("#state").val(), $("#city").val());
-        });
     }
 });

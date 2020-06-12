@@ -188,8 +188,6 @@ function createOfficialsCard(name, position, email, id) {
         id: id
     }).appendTo('#officials');
     
-    $("#" + id).tilt();
-
     $('<div>', {
         class: "officials-name",
         text: name

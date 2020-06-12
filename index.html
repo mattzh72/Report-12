@@ -60,41 +60,50 @@
             <div id="content-container">
                 <div id="form-content-wrapper">
                     <div id="instructions">Instructions: Fill out the required fields (*), and we will search for city officials and police brutality incidents in the area.</div>
-                    <label for="name">Name*<span class="error-msg">Please enter your name.</span></label>
-                    <input type="text" id="name" name="name" minlength="1">
+
+                    <div id="form">
+                        <label for="name">Name*<span class="error-msg">Please enter your name.</span></label>
+                        <input type="text" id="name" name="name" minlength="1">
 
 
-                    <label for="state">State*<span class="error-msg">Please pick a state.</span></label><br>
-                    <select name="state" id="state">
-                        <option value="" selected disabled hidden>Please pick a city.</option>
-                    </select>
+                        <label for="state">State*<span class="error-msg">Please pick a state.</span></label><br>
+                        <select name="state" id="state">
+                            <option value="" selected disabled hidden>Choose a state...</option>
+                        </select>
 
-                    <label for="city">City*<span class="error-msg">This is required!</span></label><br>
-                    <select name="city" id="city">
-                        <option value="" selected disabled hidden>Choose your city...</option>
-                    </select>
+                        <label for="city">City*<span class="error-msg">Please pick a city.</span></label><br>
+                        <select name="city" id="city">
+                            <option value="" selected disabled hidden>Choose a city...</option>
+                        </select>
 
-                    <label for="age">Age*<span class="error-msg">Enter a valid number!</span></label><br>
-                    <input type="text" id="age" name="age" minlength="1">
+                        <label for="subject">Subject Line (Please personalize this as much as possible) *<span class="error-msg">Please enter a valid subject line.</span></label><br>
+                        <input type="text" value="Calling Attention to Police Brutality" id="subject" name="subject" minlength="1">
 
-                    <label for="university">University (if currently enrolled)</label><br>
-                    <input type="text" id="university" name="university" minlength="1">
+                        <input type="checkbox" id="age" name="age">
+                        <label id="age-label" for="age">Please check this box if you are of voting age.</label> <br>
 
-                    <label for="officials">Local Officials Found</label><br>
-                    <div id="officials">
-                        <span>No matches for your chosen state and city...</span>
+                        <input type="checkbox" id="resident" name="resident">
+                        <label id="resident-label" for="resident">Please check this box if you live in the area you are sending these emails to.</label> <br>
+                        <button type="button" class="btn" id="search">Search ⟶</button>
                     </div>
 
-                    <label for="incidents">Police Brutality Incidents Found (Viewer Discretion Advised)</label><br>
-                    <div id="incidents">
-                        <span>No matches for your chosen state and city...</span>
+                    <div id="search-results">
+                        <label for="officials">Local Officials Found</label><br>
+                        <div id="officials">
+                            <span>No matches for your chosen state and city...</span>
+                        </div>
+
+                        <label for="incidents">Police Brutality Incidents Found (Viewer Discretion Advised)</label><br>
+                        <div id="incidents">
+                            <span>No matches for your chosen state and city...</span>
+                        </div>
+                        <div>
+                        <button type="button" class="btn" id="return-form">⟵ Return to Form</button>
+                        <button style="float: right;" type="button" class="btn" id="launch">Create Email ⟶</button>
+                        </div>
                     </div>
 
-                    <input type="checkbox" id="resident" name="resident">
-                    <label id="resident-label" for="resident">Please check this box if you live in the area you are sending these emails to.</label> <br>
-
-                    <button type="button" class="btn" id="launch">Launch Template ⟶</button>
-                    <div id="error-messages"></div>
+                    
                 </div>
 
                 <div id="feedback">
@@ -114,13 +123,13 @@
                             </div>
                         </div>
                         <div id="email-issues-message">Having problems sending the email? Click on the boxes above to copy the text, and then paste it into your favorite email client.</div>
-                        <div id="missing-data">We're working hard, but we're not finished yet. <a href="https://forms.gle/48XVxmAuCgPB9B8P8">Report</a> a problem using the site or <a href="https://forms.gle/ZGgnPKMF3jHgPth27">contribute</a> to our data. 
-                            
-                        <div id="future-steps">Read this <a href="https://docs.google.com/document/d/1nyWEJbNZN-U8p1XoJWSgGymT3NrsKBYBiQn7aPBIPis/edit?usp=sharing">doc</a> to find out more things you can do to help. Or, fill out some more emails with this site!</div>
+                        <div id="missing-data">We're working hard, but we're not finished yet. <a href="https://forms.gle/48XVxmAuCgPB9B8P8">Report</a> a problem using the site or <a href="https://forms.gle/ZGgnPKMF3jHgPth27">contribute</a> to our data.
+
+                            <div id="future-steps">Read this <a href="https://docs.google.com/document/d/1nyWEJbNZN-U8p1XoJWSgGymT3NrsKBYBiQn7aPBIPis/edit?usp=sharing">doc</a> to find out more things you can do to help. Or, fill out some more emails with this site!</div>
                         </div>
                     </div>
 
-                    <button type="button" class="btn" id="return">⟵ RETURN TO FORM</button>
+                    <button type="button" class="btn" id="return-search">⟵ Return to Search</button>
                 </div>
 
 
@@ -147,9 +156,6 @@
     <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-firestore.js"></script>
-
-    <!-- TILT -->
-    <script src="./js/tilt.jquery.js"></script>
 
     <!-- SCRIPTS -->
     <script src="./js/sync.js"></script>

@@ -344,6 +344,14 @@ select {
     margin-bottom: 20px;
 }
 
+#future-steps {
+    margin-top: 20px;
+}
+
+#search-results {
+    display: none;
+}
+
 @media (max-width: 992px) {
     #send {
         height: 70px;
@@ -473,6 +481,11 @@ select {
     .officials-name {
         font-size: 30px;
     }
+    
+    #return-form, #launch {
+        width: 45%;
+        font-size: 35px;
+    }
 }
 
 @media (min-width: 992px) {
@@ -488,8 +501,8 @@ select {
     #header-container {
         height: 100vh;
     }
-}
-
-#future-steps {
-    margin-top: 20px;
+    
+    body {
+        overflow: hidden;
+    }
 }
