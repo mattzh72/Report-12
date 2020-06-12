@@ -115,11 +115,11 @@ function fillTemplate(data, template) {
     
     let optionalInfo = "";
     if (data.resident && data.age) {
-        optionalInfo = ", and I am one of your constituents of voting age."
+        optionalInfo = ", and I am one of your constituents of voting age"
     } else if (data.resident && !data.age) {
-        optionalInfo = ", and I am one of your constituents."
+        optionalInfo = ", and I am one of your constituents"
     } else if (!data.resident && data.age) {
-        optionalInfo = ", and I am of voting age."
+        optionalInfo = ", and I am of voting age"
     }
     
     template = template.replace("<<Residency>>", optionalInfo);
