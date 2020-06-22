@@ -28,9 +28,9 @@ $("#launch").click(() => {
         
         $("#thanks span").text(results.name.toUpperCase());
         // Sync new email count to Firebase and update DOM
-        incrementEmailCount(num=Math.max(Object.keys(results.officials).length), 1).then((numEmails) => {
+        incrementEmailCount(num=Math.max(Object.keys(results.officials).length, 1), abbreviate=false).then((numEmails) => {
             $("#success-message span").text(numEmails);
-            $("#email-counter span").text(numEmails)
+            $("#email-counter span").text(abbreviateNumber(numEmails));
         });
         
         // Add listeners

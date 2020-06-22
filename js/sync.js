@@ -18,13 +18,13 @@ firebase.analytics();
 
 var db = firebase.firestore();
 
-function getNumEmails() {
+function getNumEmails(abbreviate=true) {
     return db.collection(COLLECTION).doc(DOCUMENT).get().then(doc => {
-        return abbreviateNumber(doc.data()[FIELD], 0);
+        return abbreviate ? abbreviateNumber(doc.data()[FIELD], 0) : doc.data()[FIELD];
     });
 }
 
-function incrementEmailCount(num=1) {
+function incrementEmailCount(num=1, abbreviate=true) {
     return db.collection(COLLECTION).doc(DOCUMENT).get().then(doc => {
         let newTotal = doc.data()[FIELD] + num;
         console.log(doc.data()[FIELD]);
@@ -33,7 +33,7 @@ function incrementEmailCount(num=1) {
             [FIELD]: newTotal
         });
         
-        return abbreviateNumber(newTotal, 0);
+        return abbreviate ? abbreviateNumber(newTotal, 0) : newTotal;   
     });
 }
 
