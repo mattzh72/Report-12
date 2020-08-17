@@ -2,6 +2,8 @@
 
 Our team web-scraped, cleaned, and aggregated data on nation-wide police brutality incidents and the contact information of their respective local city officials. We want you to report 12. 
 
+![Homepage Preview](https://raw.githubusercontent.com/mattzh72/Report-12/master/resources/images/preview.png)
+
 ## FAQ
 #### Where is this data from?
 Contact information was web-scraped from .gov webpages. Police brutality data aggregated by r/2020PoliceBrutality.
